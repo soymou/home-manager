@@ -24,26 +24,26 @@ end
 
 
 function update
-    pushd ~/NixOS
+    pushd ~/.config/home-manager
 
     switch $argv[1]
         # Case 1: 'update flake'
         case flake
-            sudo nix flake update
+            nix flake update
 
         # Case 2: 'update nixos'
-        case nixos
-            sudo nixos-rebuild switch --flake .#mou
+        case home
+            home-manager switch --flake .#mou
 
         # Case 3: 'update' (no arguments) -> Do both
         case ''
-            sudo nix flake update
+            nix flake update
             # The 'and' ensures we only rebuild if the update succeeded
-            and sudo nixos-rebuild switch --flake .#mou
+            and home-manager switch --flake .#mou
 
         # Fallback for typos
         case '*'
-            echo "Usage: update [flake|nixos]"
+            echo "Usage: update [flake|home]"
     end
 
     popd
