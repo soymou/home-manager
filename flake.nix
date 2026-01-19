@@ -34,7 +34,7 @@
 
   outputs = { self, nixpkgs, home-manager,  ... }@inputs: 
   {
-    templest = import ./dev-shells;
+    templates = import ./dev-shells;
 
     homeConfigurations."mou" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
