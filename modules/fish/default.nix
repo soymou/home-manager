@@ -8,6 +8,11 @@
     '';
   };
 
+  home.packages = with pkgs; [
+    eza 
+    neofetch
+  ];
+
   xdg.configFile."fish/functions".source = ./config/functions;
   xdg.configFile."fish/completions".source = ./config/completions;
   xdg.configFile."fish/conf.d".source = ./config/conf.d;
